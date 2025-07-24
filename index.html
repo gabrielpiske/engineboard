@@ -1,34 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EngineBoard</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Engine Board</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <header>
-        <h1>Calculo e Demonstração de Placas de Motores Trifásicos Industriais</h1>
-    </header>
+  <div class="container">
+    <div class="placa">
+      <img src="assets/board.png" alt="Placa do motor" class="placa-img">
+      <div class="overlay" id="campo-kwcv"></div>
+      <div class="overlay" id="campo-fs"></div>
+    </div>
 
-    <main>
-        <img src="assets/board.png" alt="">
-        <form action="" method="post">
+    <div class="inputs">
+      <label for="potencia">Potência (CV):</label>
+      <select id="potencia"></select>
 
-        </form>
-    </main>
+      <label for="fs">FS:</label>
+      <select id="fs">
+        <option>1.00</option>
+        <option>1.15</option>
+        <option>1.25</option>
+        <option>1.35</option>
+      </select>
 
-    <footer>
-        <p><strong>Desenvolvedores - Técnico em Desenvovimento de Sistemas: </strong>
-            <a href="https://portfolio-piske.vercel.app/" target="_blank">Gabriel Schweder Piske</a> e 
-            <a href="https://github.com/JulioBusarello" target="_blank">Julio Henrique Busarello</a>
-        </p>
-        <p><strong>Professor Orientador - Engenheiro Eletricista: </strong>
-            <a href="https://br.linkedin.com/in/anderson-wilvert-65404812b" target="_blank">Anderson Luis Wilvert</a>
-        </p>
-        <p>&copy SENAI Timbó</p>    
-    </footer>
+      <button onclick="preencherPlaca()">Enviar</button>
+    </div>
+  </div>
 
-    <script src="js/script.js"></script>
+  <script src="js/dados.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

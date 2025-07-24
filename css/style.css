@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #4e4e4e;
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.placa {
+  position: relative;
+  display: inline-block;
+}
+
+.placa-img {
+  max-width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#campo-kwcv {
+  top: 100px; 
+  left: 300px;
+}
+
+#campo-fs {
+  top: 200px;
+  left: 320px;
+}
+
+.inputs {
+  margin-top: 20px;
+}
