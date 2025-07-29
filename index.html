@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Engine Board</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -17,16 +18,20 @@
     </div>
 
     <div class="inputs">
-      <label for="potencia">Potência (CV):</label>
-      <select id="potencia"></select>
+      <div class="input-group">
+        <label for="potencia">Potência (CV):</label>
+        <select id="potencia"></select>
+      </div>
 
-      <label for="fs">FS:</label>
-      <select id="fs">
-        <option>1.00</option>
-        <option>1.15</option>
-        <option>1.25</option>
-        <option>1.35</option>
-      </select>
+      <div class="input-group">
+        <label for="fs">FS:</label>
+        <select id="fs">
+          <option value="1.00">1.00</option>
+          <option value="1.15">1.15</option>
+          <option value="1.25">1.25</option>
+          <option value="1.35">1.35</option>
+        </select>
+      </div>
 
       <button onclick="preencherPlaca()">Enviar</button>
     </div>
