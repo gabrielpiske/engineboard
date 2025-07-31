@@ -22,3 +22,8 @@ function preencherPlaca() {
   document.getElementById('campo-fs').textContent = `${fs}`;
   document.getElementById('campo-kwcv').textContent = `${kw} (${cv})`;
 }
+
+function limparCampos() {
+  document.getElementById('campo-fs').textContent = ` `;
+  document.getElementById('campo-kwcv').textContent = ` `;
+}
