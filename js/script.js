@@ -1,5 +1,7 @@
 window.onload = () => {
   const selectPotencia = document.getElementById('potencia');
+  
+  limparCampos();
 
   motores.forEach(motor => {
     const option = document.createElement('option');
@@ -15,15 +17,22 @@ function preencherPlaca() {
   const selectFS = document.getElementById('fs');
 
   const selectedOption = selectPotencia.options[selectPotencia.selectedIndex];
-  const kw = selectedOption.getAttribute('data-kw');
-  const cv = selectedOption.value;
+  const cv = parseFloat(selectedOption.value);
+  const kw = parseFloat(selectedOption.getAttribute('data-kw'));
   const fs = selectFS.value;
 
+  const motorSelecionado = motores.find(motor => motor.cv === cv);
+  
   document.getElementById('campo-fs').textContent = `${fs}`;
   document.getElementById('campo-kwcv').textContent = `${kw} (${cv})`;
+  
+  if (motorSelecionado) {
+    document.getElementById('campo-ip-in').textContent = `${motorSelecionado.polos4p.ip_in}`;
+  }
 }
 
 function limparCampos() {
   document.getElementById('campo-fs').textContent = ` `;
   document.getElementById('campo-kwcv').textContent = ` `;
+  document.getElementById('campo-ip-in').textContent = ` `;
 }
