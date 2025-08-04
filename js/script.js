@@ -15,11 +15,13 @@ window.onload = () => {
 function preencherPlaca() {
   const selectPotencia = document.getElementById('potencia');
   const selectFS = document.getElementById('fs');
+  const selectPolos = document.getElementById('polos');
 
   const selectedOption = selectPotencia.options[selectPotencia.selectedIndex];
   const cv = parseFloat(selectedOption.value);
   const kw = parseFloat(selectedOption.getAttribute('data-kw'));
   const fs = selectFS.value;
+  const polos = selectPolos.value;
 
   const motorSelecionado = motores.find(motor => motor.cv === cv);
   
@@ -27,18 +29,25 @@ function preencherPlaca() {
   document.getElementById('campo-kwcv').textContent = `${kw} (${cv})`;
   
   if (motorSelecionado) {
-    document.getElementById('campo-ip-in').textContent = `${motorSelecionado.polos4p.ip_in}`;
-    document.getElementById('campo-rendimento').textContent = `${motorSelecionado.polos4p.n}`;
-    document.getElementById('campo-fator-potencia').textContent = `${motorSelecionado.polos4p.cos}`;
+    const poloKey = `${polos}p`;
+    const dadosPolos = motorSelecionado.polos[poloKey];
+    
+    if (dadosPolos) {
+      document.getElementById('campo-ip-in').textContent = `${dadosPolos.ip_in}`;
+      document.getElementById('campo-rendimento').textContent = `${dadosPolos.η}`;
+      document.getElementById('campo-fator-potencia').textContent = `${dadosPolos.cosφ}`;
+    } else {
+      document.getElementById('campo-ip-in').textContent = '-';
+      document.getElementById('campo-rendimento').textContent = '-';
+      document.getElementById('campo-fator-potencia').textContent = '-';
+    }
   }
 }
 
 function limparCampos() {
-  document.getElementById('campo-fs').textContent = ` `;
-  document.getElementById('campo-kwcv').textContent = ` `;
-  document.getElementById('campo-ip-in').textContent = ` `;
-  document.getElementById('campo-rendimento').textContent = ` `;
-  document.getElementById('campo-fator-potencia').textContent = ` `;
+  document.getElementById('campo-fs').textContent = '';
+  document.getElementById('campo-kwcv').textContent = '';
+  document.getElementById('campo-ip-in').textContent = '';
+  document.getElementById('campo-rendimento').textContent = '';
+  document.getElementById('campo-fator-potencia').textContent = '';
 }
-
-// necessario fazer escolha de quais dados seram visualizados na placa
