@@ -63,6 +63,16 @@ body {
   left: 58%;
 }
 
+#campo-rendimento {
+  top: 73.5%;
+  left: 42%;
+}
+
+#campo-fator-potencia {
+  top: 65%;
+  left: 58%;
+}
+
 .inputs {
   background: rgba(255, 255, 255, 0.1);
   padding: 25px;

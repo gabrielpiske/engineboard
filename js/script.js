@@ -28,6 +28,8 @@ function preencherPlaca() {
   
   if (motorSelecionado) {
     document.getElementById('campo-ip-in').textContent = `${motorSelecionado.polos4p.ip_in}`;
+    document.getElementById('campo-rendimento').textContent = `${motorSelecionado.polos4p.n}`;
+    document.getElementById('campo-fator-potencia').textContent = `${motorSelecionado.polos4p.cos}`;
   }
 }
 
