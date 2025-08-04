@@ -40,3 +40,5 @@ function limparCampos() {
   document.getElementById('campo-rendimento').textContent = ` `;
   document.getElementById('campo-fator-potencia').textContent = ` `;
 }
+
+// necessario fazer escolha de quais dados seram visualizados na placa
