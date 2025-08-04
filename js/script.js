@@ -37,4 +37,6 @@ function limparCampos() {
   document.getElementById('campo-fs').textContent = ` `;
   document.getElementById('campo-kwcv').textContent = ` `;
   document.getElementById('campo-ip-in').textContent = ` `;
+  document.getElementById('campo-rendimento').textContent = ` `;
+  document.getElementById('campo-fator-potencia').textContent = ` `;
 }
