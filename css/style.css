@@ -74,11 +74,11 @@ body {
 }
 
 .inputs {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(150, 150, 150, 0.1);
   padding: 25px;
   border-radius: 8px;
   max-width: 500px;
-  margin: 0 auto;
+  width: 60%;
 }
 
 .input-group {
@@ -135,6 +135,33 @@ button:hover {
 button:active {
   transform: translateY(0);
 }
+
+.infos {
+  display: flex;
+}
+
+.infos h1 {
+  margin: 0 !important;
+  color: #fff;
+}
+
+.view {
+  margin-left: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(150, 150, 150, 0.1);
+  width: 40%;
+}
+
+.view div {
+  display: flex;
+  margin: 15px 0;
+}
+
+.view label {
+  margin: 0;
+}
+
 
 @media (max-width: 992px) {
   .overlay {

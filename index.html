@@ -2,8 +2,8 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Engine Board</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -20,36 +20,61 @@
       <div class="overlay" id="campo-fator-potencia"></div>
     </div>
 
-    <div class="inputs">
-      <div class="input-group">
-        <label for="potencia">Potência (CV):</label>
-        <select id="potencia"></select>
-      </div>
+    <div class="infos">
+      <div class="inputs">
+        <div class="input-group">
+          <label for="potencia">Potência (CV):</label>
+          <select id="potencia"></select>
+        </div>
 
-      <div class="input-group">
-        <label for="fs">FS:</label>
-        <select id="fs">
-          <option value="1.00">1.00</option>
-          <option value="1.10">1.10</option>
-          <option value="1.15">1.15</option>
-          <option value="1.25">1.25</option>
-          <option value="1.30">1.30</option>
-          <option value="1.35">1.35</option>
-        </select>
-      </div>
+        <div class="input-group">
+          <label for="fs">FS:</label>
+          <select id="fs">
+            <option value="1.00">1.00</option>
+            <option value="1.10">1.10</option>
+            <option value="1.15">1.15</option>
+            <option value="1.25">1.25</option>
+            <option value="1.30">1.30</option>
+            <option value="1.35">1.35</option>
+          </select>
+        </div>
 
-      <div class="input-group">
-        <label for="polos">Nº de Polos</label>
-        <select id="polos">
-          <option value="2">2</option>
-          <option value="4">4</option>
-          <option value="6">6</option>
-          <option value="8">8</option>
-        </select>
-      </div>
+        <div class="input-group">
+          <label for="polos">Nº de Polos</label>
+          <select id="polos">
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+          </select>
+        </div>
 
-      <button type="button" onclick="preencherPlaca()">Enviar</button>
-      <button type="button" onclick="limparCampos()">Limpar</button>
+        <button type="button" onclick="preencherPlaca()">Enviar</button>
+        <button type="button" onclick="limparCampos()">Limpar</button>
+      </div>
+      <div class="view">
+        <h1>Visualização</h1>
+        <div class="view-kwcv">
+          <input type="checkbox" id="view-kwcv" name="kwcv" checked onclick="visualizacao()">
+          <label for="view-kwcv">kW(HP-cv)</label>
+        </div>
+        <div class="view-fs">
+          <input type="checkbox" id="view-fs" name="fs" checked onclick="visualizacao()">
+          <label for="view-fs">FS</label>
+        </div>
+        <div class="view-ip-in">
+          <input type="checkbox" id="view-ip-in" name="ip-in" checked onclick="visualizacao()">
+          <label for="view-ip-in">Ip/In</label>
+        </div>
+        <div class="view-rendimento">
+          <input type="checkbox" id="view-rendimento" name="rendimento" checked onclick="visualizacao()">
+          <label for="view-rendimento">Rendimento</label>
+        </div>
+        <div class="view-fator-potencia">
+          <input type="checkbox" id="view-fator-potencia" name="fator-potencia" checked onclick="visualizacao()">
+          <label for="view-fator-potencia">Fator potencia</label>
+        </div>
+      </div>
     </div>
   </div>
 
