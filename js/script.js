@@ -25,12 +25,14 @@ function preencherPlaca() {
   const selectPotencia = document.getElementById('potencia');
   const selectFS = document.getElementById('fs');
   const selectPolos = document.getElementById('polos');
+  const inputEscorregamento = document.getElementById('escorregamento');
 
   const selectedOption = selectPotencia.options[selectPotencia.selectedIndex];
   const cv = parseFloat(selectedOption.value);
   const kw = parseFloat(selectedOption.getAttribute('data-kw'));
   const fs = selectFS.value;
   const polos = selectPolos.value;
+  const escorregamento = parseFloat(inputEscorregamento.value) || 0;
 
   const motorSelecionado = motores.find(motor => motor.cv === cv);
   
@@ -48,10 +50,14 @@ function preencherPlaca() {
 
       const correnteNominnal = calcularCorrenteNominal(kw, dadosPolos.η, dadosPolos.cosφ);
       document.getElementById('campo-in').textContent = correnteNominnal;
+      
+      const rpm = calcularRPM(polos, escorregamento);
+      document.getElementById('campo-rpm').textContent = rpm;
     } else {
       document.getElementById('campo-ip-in').textContent = '-';
       document.getElementById('campo-rendimento').textContent = '-';
       document.getElementById('campo-fator-potencia').textContent = '-';
+      document.getElementById('campo-rpm').textContent = '-';
     }
   }
 }
@@ -62,6 +68,21 @@ function limparCampos() {
   document.getElementById('campo-ip-in').textContent = '';
   document.getElementById('campo-rendimento').textContent = '';
   document.getElementById('campo-fator-potencia').textContent = '';
+  document.getElementById('campo-rpm').textContent = '';
+}
+
+function calcularRPM(polos, escorregamento) {
+  let rpmSincrono;
+  switch(polos) {
+    case '2': rpmSincrono = 3600; break;
+    case '4': rpmSincrono = 1800; break;
+    case '6': rpmSincrono = 1200; break;
+    case '8': rpmSincrono = 900; break;
+    default: rpmSincrono = 0;
+  }
+  
+  const rpm = rpmSincrono * (1 - escorregamento/100);
+  return Math.round(rpm);
 }
 
 function visualizacao() {
@@ -82,6 +103,9 @@ function visualizacao() {
 
   let campoCn = document.getElementById('campo-in');
   let viewCn = document.getElementById('view-corrente-nominal').checked;
+
+  let campoRpm = document.getElementById('campo-rpm');
+  let viewRpm = document.getElementById('view-rpm').checked;
 
   if(!viewKwcv) {
     campoKwcv.style.display = "none";
@@ -117,5 +141,11 @@ function visualizacao() {
     campoCn.style.display = "none";
   } else {
     campoCn.style.display = "block";
+  }
+
+  if(!viewRpm) {
+    campoRpm.style.display = "none";
+  } else {
+    campoRpm.style.display = "block";
   }
 }
