@@ -73,6 +73,11 @@ body {
   left: 58%;
 }
 
+#campo-in {
+  top: 55%;
+  left: 53%;
+}
+
 .inputs {
   background: rgba(150, 150, 150, 0.1);
   padding: 25px;

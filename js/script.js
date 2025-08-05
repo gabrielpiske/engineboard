@@ -12,6 +12,15 @@ window.onload = () => {
   });
 };
 
+function calcularCorrenteNominal(kw, rendimento, cosPhi) {
+  const tensao = 380;
+  const rendimentoDecimal = rendimento / 100;
+  
+  // Fórmula: In = (P * 1000) / (√3 * V * η * cosφ)
+  const correnteNominnal = (kw * 1000) / (Math.sqrt(3) * tensao * rendimentoDecimal * cosPhi);
+  return correnteNominnal.toFixed(2);
+}
+
 function preencherPlaca() {
   const selectPotencia = document.getElementById('potencia');
   const selectFS = document.getElementById('fs');
@@ -36,6 +45,9 @@ function preencherPlaca() {
       document.getElementById('campo-ip-in').textContent = `${dadosPolos.ip_in}`;
       document.getElementById('campo-rendimento').textContent = `${dadosPolos.η}`;
       document.getElementById('campo-fator-potencia').textContent = `${dadosPolos.cosφ}`;
+
+      const correnteNominnal = calcularCorrenteNominal(kw, dadosPolos.η, dadosPolos.cosφ);
+      document.getElementById('campo-in').textContent = correnteNominnal;
     } else {
       document.getElementById('campo-ip-in').textContent = '-';
       document.getElementById('campo-rendimento').textContent = '-';
@@ -68,6 +80,9 @@ function visualizacao() {
   let campoFp = document.getElementById('campo-fator-potencia');
   let viewFp = document.getElementById('view-fator-potencia').checked;
 
+  let campoCn = document.getElementById('campo-in');
+  let viewCn = document.getElementById('view-corrente-nominal').checked;
+
   if(!viewKwcv) {
     campoKwcv.style.display = "none";
   } else {
@@ -96,5 +111,11 @@ function visualizacao() {
     campoFp.style.display = "none";
   } else {
     campoFp.style.display = "block";
+  }
+
+  if(!viewCn) {
+    campoCn.style.display = "none";
+  } else {
+    campoCn.style.display = "block";
   }
 }
