@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Engine Board</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -13,6 +14,7 @@
   <div class="container">
     <div class="placa">
       <img src="assets/board.png" alt="Placa do motor" class="placa-img">
+      <button type="button" onclick="abrirModal()"><span class="material-icons">fullscreen</span></button>
       <div class="overlay" id="campo-kwcv"></div>
       <div class="overlay" id="campo-fs"></div>
       <div class="overlay" id="campo-ip-in"></div>
@@ -42,21 +44,21 @@
         </div>
 
         <div class="input-row">
-            <div class="input-group">
-              <label for="polos">Nº de Polos</label>
-              <select id="polos">
-                <option value="2">2</option>
-                <option value="4">4</option>
-                <option value="6">6</option>
-                <option value="8">8</option>
-              </select>
-            </div>
-
-            <div class="input-group">
-              <label for="escorregamento">Escorregamento (%):</label>
-              <input type="number" id="escorregamento" min="0" max="13" value="0">
-            </div>
+          <div class="input-group">
+            <label for="polos">Nº de Polos</label>
+            <select id="polos">
+              <option value="2">2</option>
+              <option value="4">4</option>
+              <option value="6">6</option>
+              <option value="8">8</option>
+            </select>
           </div>
+
+          <div class="input-group">
+            <label for="escorregamento">Escorregamento (%):</label>
+            <input type="number" id="escorregamento" min="0" max="13" value="0">
+          </div>
+        </div>
 
         <button type="button" onclick="preencherPlaca()">Enviar</button>
         <button type="button" onclick="limparCampos()">Limpar</button>
@@ -93,6 +95,20 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="modal-placa" id="modal-placa" style="display: none;">
+    <button type="button" class="btn-close" onclick="closeModal()">×</button>
+    <div class="imagem">
+      <img src="assets/board.png" alt="Placa do motor" class="modal-placa-img">
+      <div class="modal-overlay" id="modal-campo-kwcv"></div>
+      <div class="modal-overlay" id="modal-campo-fs"></div>
+      <div class="modal-overlay" id="modal-campo-ip-in"></div>
+      <div class="modal-overlay" id="modal-campo-rendimento"></div>
+      <div class="modal-overlay" id="modal-campo-fator-potencia"></div>
+      <div class="modal-overlay" id="modal-campo-in"></div>
+      <div class="modal-overlay" id="modal-campo-rpm"></div>
+    </div>
+
   </div>
 
   <script src="js/dados.js"></script>

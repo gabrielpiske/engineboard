@@ -8,10 +8,6 @@ body {
   text-align: center;
   margin: 0;
   padding: 0;
-  min-height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
 }
 
 .container {
@@ -29,7 +25,7 @@ body {
   display: inline-block;
   margin-bottom: 30px;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: auto;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -198,9 +194,117 @@ input[type="number"]:focus {
   box-shadow: 0 0 0 3px rgba(51, 142, 170, 0.651);
 }
 
+.modal-placa .imagem {
+  padding: 3%;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
 
-@media (max-width: 992px) {
+.modal-placa {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  overflow: auto;
+}
+
+.modal-placa-img {
+  max-width: 100%;
+  height: auto;
+}
+
+.modal-placa button {
+  background: none !important;
+  position: absolute;
+  right: 3% !important;
+  top: 2% !important;
+  width: 10px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 40px;
+  box-shadow: none !important;
+}
+
+.placa button {
+  background: none;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: 30px !important;
+  height: 30px !important;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  cursor: pointer;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.modal-overlay {
+  position: absolute;
+  color: white;
+  font-weight: 300;
+  font-size: 40px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -50%);
+}
+
+#modal-campo-kwcv {
+  top: 40%;
+  left: 40%;
+  z-index: 999;
+}
+
+#modal-campo-fs {
+  top: 47%;
+  left: 40%;
+  z-index: 999;
+}
+
+#modal-campo-ip-in {
+  top: 66%;
+  left: 58%;
+  z-index: 999;
+}
+
+#modal-campo-rendimento {
+  top: 66%;
+  left: 42%;
+  z-index: 999;
+}
+
+#modal-campo-fator-potencia {
+  top: 60%;
+  left: 57%;
+  z-index: 999;
+}
+
+#modal-campo-in {
+  top: 53.5%;
+  left: 53%;
+  z-index: 999;
+}
+
+#modal-campo-rpm {
+  top: 66%;
+  left: 26%;
+  z-index: 999;
+}
+
+
+@media (max-width: 1090px) {
   .overlay {
+    font-size: 20px;
+    white-space: nowrap;
+  }
+
+  .modal-overlay {
     font-size: 20px;
     white-space: nowrap;
   }
@@ -229,6 +333,11 @@ input[type="number"]:focus {
   .overlay {
     font-size: 16px;
   }
+
+  .modal-overlay {
+    font-size: 16px;
+  }
+
   .input-row {
     flex-direction: column;
     gap: 10px;
@@ -240,10 +349,18 @@ input[type="number"]:focus {
   .overlay {
     font-size: 13px;
   }
+
+  .modal-overlay {
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 480px) {
   .overlay {
+    font-size: 12px;
+  }
+
+  .modal-overlay {
     font-size: 12px;
   }
 }
@@ -252,10 +369,18 @@ input[type="number"]:focus {
   .overlay {
     font-size: 9px;
   }
+
+  .modal-overlay {
+    font-size: 9px;
+  }
 }
 
 @media (max-width: 280px) {
   .overlay {
+    font-size: 7px;
+  }
+
+  .modal-overlay {
     font-size: 7px;
   }
 }

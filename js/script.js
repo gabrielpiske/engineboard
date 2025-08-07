@@ -60,6 +60,7 @@ function preencherPlaca() {
       document.getElementById('campo-rpm').textContent = '-';
     }
   }
+
 }
 
 function limparCampos() {
@@ -147,5 +148,59 @@ function visualizacao() {
     campoRpm.style.display = "none";
   } else {
     campoRpm.style.display = "block";
+  }
+}
+
+function closeModal() {
+  let modal = document.getElementById("modal-placa");
+  
+  modal.style.display = "none";
+}
+
+function abrirModal() {
+  let modal = document.getElementById("modal-placa");
+  
+  modal.style.display = "flex";
+  preencherPlacaModal();
+}
+
+function preencherPlacaModal() {
+  const selectPotencia = document.getElementById('potencia');
+  const selectFS = document.getElementById('fs');
+  const selectPolos = document.getElementById('polos');
+  const inputEscorregamento = document.getElementById('escorregamento');
+
+  const selectedOption = selectPotencia.options[selectPotencia.selectedIndex];
+  const cv = parseFloat(selectedOption.value);
+  const kw = parseFloat(selectedOption.getAttribute('data-kw'));
+  const fs = selectFS.value;
+  const polos = selectPolos.value;
+  const escorregamento = parseFloat(inputEscorregamento.value) || 0;
+
+  const motorSelecionado = motores.find(motor => motor.cv === cv);
+  
+  document.getElementById('modal-campo-fs').textContent = `${fs}`;
+  document.getElementById('modal-campo-kwcv').textContent = `${kw} (${cv})`;
+  
+  if (motorSelecionado) {
+    const poloKey = `${polos}p`;
+    const dadosPolos = motorSelecionado.polos[poloKey];
+    
+    if (dadosPolos) {
+      document.getElementById('modal-campo-ip-in').textContent = `${dadosPolos.ip_in}`;
+      document.getElementById('modal-campo-rendimento').textContent = `${dadosPolos.η}`;
+      document.getElementById('modal-campo-fator-potencia').textContent = `${dadosPolos.cosφ}`;
+
+      const correnteNominnal = calcularCorrenteNominal(kw, dadosPolos.η, dadosPolos.cosφ);
+      document.getElementById('modal-campo-in').textContent = correnteNominnal;
+      
+      const rpm = calcularRPM(polos, escorregamento);
+      document.getElementById('modal-campo-rpm').textContent = rpm;
+    } else {
+      document.getElementById('modal-campo-ip-in').textContent = '-';
+      document.getElementById('modal-campo-rendimento').textContent = '-';
+      document.getElementById('modal-campo-fator-potencia').textContent = '-';
+      document.getElementById('modal-campo-rpm').textContent = '-';
+    }
   }
 }
