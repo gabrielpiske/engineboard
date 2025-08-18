@@ -179,28 +179,71 @@ function preencherPlacaModal() {
 
   const motorSelecionado = motores.find(motor => motor.cv === cv);
   
-  document.getElementById('modal-campo-fs').textContent = `${fs}`;
-  document.getElementById('modal-campo-kwcv').textContent = `${kw} (${cv})`;
-  
+  // Obter estado das checkboxes
+  const viewKwcv = document.getElementById('view-kwcv').checked;
+  const viewFS = document.getElementById('view-fs').checked;
+  const viewIpin = document.getElementById('view-ip-in').checked;
+  const viewRend = document.getElementById('view-rendimento').checked;
+  const viewFp = document.getElementById('view-fator-potencia').checked;
+  const viewCn = document.getElementById('view-corrente-nominal').checked;
+  const viewRpm = document.getElementById('view-rpm').checked;
+
+  // Preencher apenas os campos selecionados
+  if (viewKwcv) {
+    document.getElementById('modal-campo-kwcv').textContent = `${kw} (${cv})`;
+    document.getElementById('modal-campo-kwcv').style.display = "block";
+  } else {
+    document.getElementById('modal-campo-kwcv').style.display = "none";
+  }
+
+  if (viewFS) {
+    document.getElementById('modal-campo-fs').textContent = `${fs}`;
+    document.getElementById('modal-campo-fs').style.display = "block";
+  } else {
+    document.getElementById('modal-campo-fs').style.display = "none";
+  }
+
   if (motorSelecionado) {
     const poloKey = `${polos}p`;
     const dadosPolos = motorSelecionado.polos[poloKey];
     
     if (dadosPolos) {
-      document.getElementById('modal-campo-ip-in').textContent = `${dadosPolos.ip_in}`;
-      document.getElementById('modal-campo-rendimento').textContent = `${dadosPolos.η}`;
-      document.getElementById('modal-campo-fator-potencia').textContent = `${dadosPolos.cosφ}`;
+      if (viewIpin) {
+        document.getElementById('modal-campo-ip-in').textContent = `${dadosPolos.ip_in}`;
+        document.getElementById('modal-campo-ip-in').style.display = "block";
+      } else {
+        document.getElementById('modal-campo-ip-in').style.display = "none";
+      }
 
-      const correnteNominnal = calcularCorrenteNominal(kw, dadosPolos.η, dadosPolos.cosφ);
-      document.getElementById('modal-campo-in').textContent = correnteNominnal;
+      if (viewRend) {
+        document.getElementById('modal-campo-rendimento').textContent = `${dadosPolos.η}`;
+        document.getElementById('modal-campo-rendimento').style.display = "block";
+      } else {
+        document.getElementById('modal-campo-rendimento').style.display = "none";
+      }
+
+      if (viewFp) {
+        document.getElementById('modal-campo-fator-potencia').textContent = `${dadosPolos.cosφ}`;
+        document.getElementById('modal-campo-fator-potencia').style.display = "block";
+      } else {
+        document.getElementById('modal-campo-fator-potencia').style.display = "none";
+      }
+
+      if (viewCn) {
+        const correnteNominnal = calcularCorrenteNominal(kw, dadosPolos.η, dadosPolos.cosφ);
+        document.getElementById('modal-campo-in').textContent = correnteNominnal;
+        document.getElementById('modal-campo-in').style.display = "block";
+      } else {
+        document.getElementById('modal-campo-in').style.display = "none";
+      }
       
-      const rpm = calcularRPM(polos, escorregamento);
-      document.getElementById('modal-campo-rpm').textContent = rpm;
-    } else {
-      document.getElementById('modal-campo-ip-in').textContent = '-';
-      document.getElementById('modal-campo-rendimento').textContent = '-';
-      document.getElementById('modal-campo-fator-potencia').textContent = '-';
-      document.getElementById('modal-campo-rpm').textContent = '-';
+      if (viewRpm) {
+        const rpm = calcularRPM(polos, escorregamento);
+        document.getElementById('modal-campo-rpm').textContent = rpm;
+        document.getElementById('modal-campo-rpm').style.display = "block";
+      } else {
+        document.getElementById('modal-campo-rpm').style.display = "none";
+      }
     }
   }
 }
